@@ -29,10 +29,8 @@ public class GameManager : MonoBehaviour
     {
         if (bestScore == null)
         {
-            bestScore = new BestScore("None", 0);
+            bestScore = new BestScore("", 0);
         }
-
-        Debug.Log(Application.persistentDataPath);
     }
 
     public void SaveBestScore(float score)
@@ -52,6 +50,16 @@ public class GameManager : MonoBehaviour
             BestScore data = JsonUtility.FromJson<BestScore>(json);
             this.bestScore = data;
         }
+    }
+
+    public string GetBestScoreMessage()
+    {
+        if (bestScore == null || bestScore.score == 0)
+        {
+            return "No best score yet";
+        }
+
+        return $"Best Score : {bestScore.player} : {bestScore.score.ToString()}";
     }
 
     public class BestScore

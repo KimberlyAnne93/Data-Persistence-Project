@@ -16,17 +16,7 @@ public class MenuUIManager : MonoBehaviour
 
     void Start()
     {
-        if (GameManager.Instance.bestScore != null)
-        {
-            float score = GameManager.Instance.bestScore.score;
-            string player = GameManager.Instance.bestScore.player;
-
-            bestScoreText.text = $"Best Score : {player} : {score.ToString()}";
-        }
-        else
-        {
-            bestScoreText.text = "No best score yet";
-        }
+        bestScoreText.text = GameManager.Instance.GetBestScoreMessage();
     }
 
     public void StartGame()

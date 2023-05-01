@@ -36,15 +36,8 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
-        if (GameManager.Instance.bestScore != null)
-        {
-            BestScoreText.text =
-                $"Best Score : {GameManager.Instance.bestScore.player} : {GameManager.Instance.bestScore.score}";
-        }
-        else
-        {
-            BestScoreText.text = "No best score yet";
-        }
+
+        BestScoreText.text = GameManager.Instance.GetBestScoreMessage();
     }
 
     private void Update()
